@@ -6,7 +6,7 @@
     <class name="com.hibernate.tutorial.Product" table="PRODUCT">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="code" type="java.lang.String">
             <column name="CODE" />
@@ -17,5 +17,8 @@
         <property name="price" type="java.math.BigDecimal">
             <column name="PRICE" />
         </property>
+        <many-to-one name="category" class="com.hibernate.tutorial.Category" fetch="select">
+            <column name="CATEGORY_ID" not-null="true"/>
+        </many-to-one>
     </class>
 </hibernate-mapping>
