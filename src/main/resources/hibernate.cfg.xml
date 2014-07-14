@@ -12,7 +12,7 @@
         <property name="show_sql">true</property>
     	<property name="format_sql">true</property>
     	
-        <mapping resource="com/hibernate/tutorial/Product.hbm.xml"/>
-        <mapping resource="com/hibernate/tutorial/Category.hbm.xml"/>
+        <mapping resource="com/hibernate/tutorial/Student.hbm.xml"/>
+        <mapping resource="com/hibernate/tutorial/Course.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
