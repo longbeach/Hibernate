@@ -9,7 +9,7 @@ private static final SessionFactory sessionFactory = buildSessionFactory();
 
  private static SessionFactory buildSessionFactory() {
         try {
-            // Create the SessionFactory from hibernate.cfg.xml
+            // Creation de la SessionFactory depuis hibernate.cfg.xml
             return new Configuration().configure().buildSessionFactory();
         }
         catch (Throwable ex) {
@@ -24,7 +24,7 @@ private static final SessionFactory sessionFactory = buildSessionFactory();
         }
 
         public static void shutdown() {
-            // Close caches and connection pools
+            // Fermer les caches et pools de connexion
             getSessionFactory().close();
         }
         }

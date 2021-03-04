@@ -3,26 +3,26 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Mar 22, 2014 8:13:50 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.hibernate.tutorial.Category" table="CATEGORY">
+    <class name="com.cel.hibernatesandbox.Categorie" table="CATEGORIE">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="increment" />
         </id>
-        <property name="name" type="java.lang.String">
-            <column name="NAME" />
+        <property name="nom" type="java.lang.String">
+            <column name="NOM" />
         </property>
-        <set name="productDetails" table="PRODUCT" inverse="true" lazy="true" access="field" fetch="select">
+        <set name="produitDetails" table="PRODUIT" inverse="true" lazy="true" access="field" fetch="select">
             <key>
                 <column name="ID" />
             </key>
-            <one-to-many class="com.hibernate.tutorial.Product" />
+            <one-to-many class="com.cel.hibernatesandbox.Produit" />
         </set>
     </class>
     
 
     <sql-query name="toutesCategories" flush-mode="never">
-        <return class="com.hibernate.tutorial.Category"/>
-        select * from (SELECT * from CATEGORY)
+        <return class="com.cel.hibernatesandbox.Categorie"/>
+        select * from (SELECT * from CATEGORIE)
     </sql-query>
 
     

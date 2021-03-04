@@ -9,65 +9,62 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.junit.Test;
 
+import com.cel.hibernatesandbox.Categorie;
+import com.cel.hibernatesandbox.JeuExterne;
+import com.cel.hibernatesandbox.JeuInterne;
+import com.cel.hibernatesandbox.Produit;
 import com.hibernate.persistance.HibernatePersistence;
-import com.hibernate.tutorial.Category;
-import com.hibernate.tutorial.IndoorGame;
-import com.hibernate.tutorial.OutdoorGame;
-import com.hibernate.tutorial.Product;
 
-/**
- * Unit test for simple App.
- */
 public class MainTest {
 	private static Session session;
-    private static Category category;
-    private static Product product;
+    private static Categorie categorie;
+    private static Produit produit;
 
     
     @Test
-    public void testCategory(){
-        String name = "Penalty";
-        category = new Category();
+    public void testCategorie(){
+        String nom = "Alimentation";
+        categorie = new Categorie();
         session = HibernatePersistence.getSessionFactory().openSession();
-        category.setName(name);
+        categorie.setNom(nom);
         session.beginTransaction();
         
-        Integer categoryId = (Integer) session.save(category);
+        Integer categorieId = (Integer) session.save(categorie);
         session.getTransaction().commit();
-        category = (Category) session.get(Category.class, categoryId);
+        categorie = (Categorie) session.get(Categorie.class, categorieId);
         
-        assertEquals("Penalty", category.getName());
+        assertEquals("Alimentation", categorie.getNom());
     }
     
     @Test
-    public void testProduct(){
-        product = new Product();
+    public void testProduit(){
+        produit = new Produit();
         session = HibernatePersistence.getSessionFactory().openSession();
-        product.setName("COKE");
-        product.setCode("C002");
-        product.setPrice(new BigDecimal("18.00"));
-        product.setCategory(category);
+        produit.setNom("Chips");
+        produit.setCode("C002");
+        produit.setPrix(new BigDecimal("4.00"));
+        produit.setCategorie(categorie);
         session.beginTransaction();
         
-        Integer productId =(Integer) session.save(product);
+        Integer produitId =(Integer) session.save(produit);
         session.getTransaction().commit();
-        product = (Product) session.get(Product.class, productId);
+        produit = (Produit) session.get(Produit.class, produitId);
         
-        assertEquals("COKE",product.getName());
-        assertEquals(category.getId(), product.getCategory().getId());
+        assertEquals("Chips",produit.getNom());
+        assertEquals(categorie.getId(), produit.getCategorie().getId());
     }
     
     //@Test
-    public void testProductNamedQuery(){
+    public void testProduitNamedQuery(){
         session = HibernatePersistence.getSessionFactory().openSession();
         session.beginTransaction();
         
         Query query = session.getNamedQuery("toutesCategories");
         
-        List<Category> categories = query.list();
-        for(Category category : categories)
+        List<Categorie> categories = query.list();
+        for(Categorie categorie : categories)
         {
-         System.out.println(category);
+         System.out.println(categorie);
         }
         assertEquals(0,categories.size());
         
@@ -81,18 +78,18 @@ public class MainTest {
         session.beginTransaction();      
 
  
-        IndoorGame indoorGame = new IndoorGame();
-        indoorGame.setAgeGroup("2+");
-        indoorGame.setName("Clay Game");
-        indoorGame.setNumberOfPlayers(2);
+        JeuInterne jeuInterne = new JeuInterne();
+        jeuInterne.setAgeGroupe("2+");
+        jeuInterne.setNom("Jeu d'argile");
+        jeuInterne.setNombreJoueurs(2);
  
-        OutdoorGame outdoorGame = new OutdoorGame();
+        JeuExterne jeuExterne = new JeuExterne();
  
-        outdoorGame.setName("Cricket");
-        outdoorGame.setRequiredArea("22 yards");
+        jeuExterne.setNom("Cricket");
+        jeuExterne.setSurfaceRequise("22 mètres");
  
-        session.save(indoorGame);
-        session.save(outdoorGame);
+        session.save(jeuInterne);
+        session.save(jeuExterne);
  
         session.getTransaction().commit();
         session.close();

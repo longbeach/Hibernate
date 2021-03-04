@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+ 
+<hibernate-mapping>
+   <class name="com.cel.hibernatesandbox.Jeu" abstract="true">
+      <id name="id" type="int" column="JEU_ID">
+         <generator class="hilo"/>
+      </id>
+ 
+      <property name="nom" column="nom" type="string"/>
+ 
+      <union-subclass name="com.cel.hibernatesandbox.JeuInterne" table="JEU_INTERNE">  
+           <property name="ageGroupe" column="AGE_GROUPE" type="string"></property>  
+            <property name="nombreJoueurs" column="NOMBRE_JOUEURS" type="int"></property>  
+      </union-subclass>  
+ 
+      <union-subclass name="com.cel.hibernatesandbox.JeuExterne" table="JEU_EXTERNE">  
+ 
+         <property name="surfaceRequise" column="SURFACE_REQUISE" type="string"></property> 
+      </union-subclass>  
+ 
+    </class>
+</hibernate-mapping>

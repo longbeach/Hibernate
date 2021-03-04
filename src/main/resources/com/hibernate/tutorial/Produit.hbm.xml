@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Feb 22, 2014 2:18:12 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.hibernate.tutorial.Product" table="PRODUCT">
+    <class name="com.cel.hibernatesandbox.Produit" table="PRODUIT">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="increment" />
@@ -11,14 +11,14 @@
         <property name="code" type="java.lang.String">
             <column name="CODE" />
         </property>
-        <property name="name" type="java.lang.String">
-            <column name="NAME" />
+        <property name="nom" type="java.lang.String">
+            <column name="NOM" />
         </property>
-        <property name="price" type="java.math.BigDecimal">
-            <column name="PRICE" />
+        <property name="prix" type="java.math.BigDecimal">
+            <column name="PRIX" />
         </property>
-        <many-to-one name="category" class="com.hibernate.tutorial.Category" fetch="select">
-            <column name="CATEGORY_ID" not-null="false"/>
+        <many-to-one name="categorie" class="com.cel.hibernatesandbox.Categorie" fetch="select">
+            <column name="CATEGORIE_ID" not-null="false"/>
         </many-to-one>
     </class>
     

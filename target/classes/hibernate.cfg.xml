@@ -14,8 +14,8 @@
         <property name="show_sql">true</property>
     	<property name="format_sql">true</property>
     	
-        <mapping resource="com/hibernate/tutorial/Product.hbm.xml"/>
-        <mapping resource="com/hibernate/tutorial/Category.hbm.xml"/>
-        <mapping resource="com/hibernate/tutorial/Table-per-concrete.hbm.xml"/>
+        <mapping resource="com/hibernate/tutorial/Produit.hbm.xml"/>
+        <mapping resource="com/hibernate/tutorial/Categorie.hbm.xml"/>
+        <mapping resource="com/hibernate/tutorial/Table-par-concrete.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
