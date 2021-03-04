@@ -18,4 +18,12 @@
             <one-to-many class="com.hibernate.tutorial.Product" />
         </set>
     </class>
+    
+
+    <sql-query name="toutesCategories" flush-mode="never">
+        <return class="com.hibernate.tutorial.Category"/>
+        select * from (SELECT * from CATEGORY)
+    </sql-query>
+
+    
 </hibernate-mapping>

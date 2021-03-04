@@ -18,7 +18,10 @@
             <column name="PRICE" />
         </property>
         <many-to-one name="category" class="com.hibernate.tutorial.Category" fetch="select">
-            <column name="CATEGORY_ID" not-null="true"/>
+            <column name="CATEGORY_ID" not-null="false"/>
         </many-to-one>
     </class>
+    
+        
+    
 </hibernate-mapping>
