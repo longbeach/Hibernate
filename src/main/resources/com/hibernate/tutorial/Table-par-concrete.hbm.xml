@@ -5,19 +5,22 @@
  
 <hibernate-mapping>
    <class name="com.cel.hibernatesandbox.Jeu" abstract="true">
-      <id name="id" type="int" column="JEU_ID">
-         <generator class="hilo"/>
+      <id name="id" type="int" column="JEU_ID">         
       </id>
  
       <property name="nom" column="nom" type="string"/>
  
       <union-subclass name="com.cel.hibernatesandbox.JeuInterne" table="JEU_INTERNE">  
+           <subselect>
+            select NOM, AGE_GROUPE, NOMBRE_JOUEURS, JEU_ID
+            from JEU_INTERNE
+            where  AGE_GROUPE is not null
+            </subselect>            
            <property name="ageGroupe" column="AGE_GROUPE" type="string"></property>  
             <property name="nombreJoueurs" column="NOMBRE_JOUEURS" type="int"></property>  
       </union-subclass>  
  
-      <union-subclass name="com.cel.hibernatesandbox.JeuExterne" table="JEU_EXTERNE">  
- 
+      <union-subclass name="com.cel.hibernatesandbox.JeuExterne" table="JEU_EXTERNE">               
          <property name="surfaceRequise" column="SURFACE_REQUISE" type="string"></property> 
       </union-subclass>  
  
