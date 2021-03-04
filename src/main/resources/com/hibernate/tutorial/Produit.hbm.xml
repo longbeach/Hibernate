@@ -18,7 +18,7 @@
             <column name="PRIX" />
         </property>
         <many-to-one name="categorie" class="com.cel.hibernatesandbox.Categorie" fetch="select">
-            <column name="CATEGORIE_ID" not-null="false"/>
+            <column name="CATEGORIE_ID" not-null="true"/>
         </many-to-one>
     </class>
     

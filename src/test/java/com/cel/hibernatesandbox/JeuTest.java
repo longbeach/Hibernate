@@ -1,7 +1,7 @@
 package com.cel.hibernatesandbox;
 
 import org.hibernate.Session;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.hibernate.persistance.HibernatePersistence;
 
