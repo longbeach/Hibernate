@@ -1,4 +1,4 @@
-
+package com.cel.hibernatesandbox;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,14 +9,11 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.junit.Test;
 
-import com.cel.hibernatesandbox.Categorie;
-import com.cel.hibernatesandbox.JeuExterne;
-import com.cel.hibernatesandbox.JeuInterne;
-import com.cel.hibernatesandbox.Produit;
 import com.hibernate.persistance.HibernatePersistence;
+public class CategorieProduitTest
+{
 
-public class MainTest {
-	private static Session session;
+    private static Session session;
     private static Categorie categorie;
     private static Produit produit;
 
@@ -72,29 +69,4 @@ public class MainTest {
         session.close();
     }
     
-    @Test
-    public void testUnionSubclass(){
-        session = HibernatePersistence.getSessionFactory().openSession();
-        session.beginTransaction();      
-
- 
-        JeuInterne jeuInterne = new JeuInterne();
-        jeuInterne.setAgeGroupe("2+");
-        jeuInterne.setNom("Jeu d'argile");
-        jeuInterne.setNombreJoueurs(2);
- 
-        JeuExterne jeuExterne = new JeuExterne();
- 
-        jeuExterne.setNom("Cricket");
-        jeuExterne.setSurfaceRequise("22 mètres");
- 
-        session.save(jeuInterne);
-        session.save(jeuExterne);
- 
-        session.getTransaction().commit();
-        session.close();
-    }
-    
-    
-   
 }
