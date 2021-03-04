@@ -1,7 +1,5 @@
 package com.cel.hibernatesandbox;
 
-
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigDecimal;
@@ -15,11 +13,8 @@ import org.junit.jupiter.api.Test;
 
 import com.hibernate.persistance.HibernatePersistence;
 
-
-
 public class CategorieProduitTest
 {
-
     private static Session session;
 
     private static Categorie categorie;
@@ -52,7 +47,7 @@ public class CategorieProduitTest
         produit.setNom("Chips");
         produit.setCode("C002");
         produit.setPrix(new BigDecimal("4.00"));
-        produit.setCategorie(categorie);            
+        produit.setCategorie(categorie);
         session.beginTransaction();
 
         Integer produitId = (Integer) session.save(produit);
